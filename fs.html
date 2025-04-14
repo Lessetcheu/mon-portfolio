@@ -1,0 +1,64 @@
+<!-- voici le code html
+          <div class="row">
+            <div class="contact-form reveal">
+              <h3>Send Message</h3>
+              <div class="input-box">
+                <input type="text" name="" value="" placeholder="Name">
+              </div>
+              <div class="input-box">
+                <input type="text" name="" value="" placeholder="Email">
+              </div>
+              <div class="input-box">
+                <textarea name="name" rows="8" cols="80" placeholder="Message"></textarea>
+              </div>
+              <div class="input-box">
+                <input type="submit" class="send-btn" name="" value="Send">
+              </div>
+            </div>
+          </div>
+
+fais tous la logique emailjs et remet moi le bon code et dis le reste a faire pour que sa marche. -->
+
+
+<div id="contact-form" class="row">
+  <div class="contact-form reveal">
+      <h3>Send Message</h3>
+      <div class="input-box">
+          <input type="text" name="name" placeholder="Name" required>
+      </div>
+      <div class="input-box">
+          <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <div class="input-box">
+          <textarea name="message" rows="8" cols="80" placeholder="Message"></textarea>
+      </div>
+      <div class="input-box">
+          <input type="submit" class="send-btn" value="Send">
+      </div>
+  </div>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function () {
+      emailjs.init("bo8C44-hurepbj4Uy"); // 🔁 Remplace par ta clé publique EmailJS
+  })();
+
+  document
+      .getElementById("contact-form")
+      .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          emailjs
+              .sendForm("service_l2g5lgd", "template_7v6nxtw", this)
+              .then(
+                  () => {
+                      alert("✅ Message envoyé avec succès !");
+                  },
+                  (error) => {
+                      console.error("❌ Erreur :", error);
+                      alert("Erreur lors de l'envoi du message.");
+                  }
+              );
+      });
+</script>
